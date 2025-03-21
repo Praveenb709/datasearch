@@ -1,0 +1,4 @@
+FastAPI
+google-cloud-bigquery
+uvicorn
+pydantic
