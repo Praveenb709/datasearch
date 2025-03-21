@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Any, Dict
-from src.services.bigquery_service import fetch_records
+from datasearch.src.services.bigquery_service import fetch_records
 
 app = FastAPI()
 

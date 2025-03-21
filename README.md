@@ -41,6 +41,8 @@ fastapi-bigquery-app
 1. **Run the FastAPI application:**
    ```bash
    uvicorn src.main:app --reload
+   uvicorn fastapi-bigquery-app.src.main:app --reload
+   
    ```
 
 2. **Send a POST request to the endpoint:**

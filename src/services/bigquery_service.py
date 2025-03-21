@@ -3,7 +3,7 @@ from typing import Any, List, Dict
 import os
 
 # Set the path to the service account key file
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/dev/Documents/Data_search/datasearch/sucharith-project1-60513598121e.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/dev/Documents/Data_search/datasearch/config.json"
 
 def fetch_records(
     district: str,
@@ -27,15 +27,20 @@ def fetch_records(
     FROM `sucharith-project1.Datasearch.data`
     WHERE District = "{district}"
         AND `Mandal Name` = "{mandal}"
-        AND `{additional_var1_name}` = "{additional_var1_value}"
+        AND `{additional_var1_name}` = "{additional_var1_value}";
     """
     print("Query:", query)
 
-    # Execute the query
-    query_job = client.query(query)
-    results = query_job.result()
+    try:
+        # Execute the query
+        query_job = client.query(query)
+        results = query_job.result()
+    except Exception as e:
+        print("Error executing query:", e)
+        return []
 
     # Convert the results to a list of dictionaries
     response = [dict(row) for row in results]
+    print("Response:", response)
 
     return response
